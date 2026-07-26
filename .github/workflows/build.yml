@@ -1,0 +1,29 @@
+name: Build sepiaOS
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: 
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+      options: --privileged 
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Build Dependencies
+        run: pacman -Syu --noconfirm archiso
+
+      - name: Build the ISO
+        run: mkarchiso -v -w /tmp/work -o /tmp/out .
+
+      - name: Upload ISO Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sepiaOS-Live-ISO
+          path: /tmp/out/*.iso
+          retention-days: 3
