@@ -1,23 +1,32 @@
-### AL ###
-#Template for AL projects for Dynamics 365 Business Central
-#launch.json folder
+# =========================
+# archiso Build Artifacts
+# =========================
+# These directories contain the massive temporary file systems 
+# and the final compiled operating system.
+work/
+out/
+
+# Never upload the final images
+*.iso
+*.img
+
+# =========================
+# Logs & Temporary Files
+# =========================
+*.log
+*.swp
+*~
+.directory
+
+# =========================
+# Editor & IDE Files
+# =========================
+# Ignores workspace settings if you use VSCode, JetBrains, etc.
 .vscode/
-#Cache folder
-.alcache/
-#Symbols folder
-.alpackages/
-#Snapshots folder
-.snapshots/
-#Testing Output folder
-.output/
-#Extension App-file
-*.app
-#Rapid Application Development File
-rad.json
-#Translation Base-file
-*.g.xlf
-#License-files
-*.bclicense
-*.flf
-#Test results file
-TestResults.xml
+.idea/
+
+# =========================
+# OS Generated Files
+# =========================
+.DS_Store
+Thumbs.db

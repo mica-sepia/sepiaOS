@@ -128,3 +128,59 @@ xdg-utils
 xfsprogs
 xl2tpd
 zsh
+# --- Base System & Hardware ---
+base
+base-devel
+linux
+linux-firmware
+sof-firmware
+sudo
+nano
+git
+wget
+curl
+
+# --- Graphics & Display ---
+mesa
+xorg-xwayland
+qt6-wayland
+
+# --- KDE Plasma (Minimal) ---
+plasma-desktop
+sddm
+sddm-kcm
+dolphin
+konsole
+plasma-nm
+plasma-pa
+kscreen
+xdg-user-dirs
+xdg-utils
+
+# --- Audio & Networking ---
+pipewire
+wireplumber
+pipewire-audio
+pipewire-pulse
+pipewire-alsa
+pipewire-jack
+networkmanager
+iwd
+bluez
+bluez-utils
+
+# --- Privacy & Security ---
+firefox
+torbrowser-launcher
+ufw
+dnscrypt-proxy
+keepassxc
+cryptsetup
+veracrypt
+mat2
+onionshare
+bleachbit
+
+# --- GUI Installer ---
+calamares
+ckbcomp
