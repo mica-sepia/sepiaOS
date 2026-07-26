@@ -3,7 +3,7 @@ name: Build sepiaOS
 on:
   push:
     branches: [ main ]
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   build-iso:
@@ -15,8 +15,20 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Build Dependencies
-        run: pacman -Syu --noconfirm archiso
+      - name: Install Build Dependencies and Initialize Keyring
+        run: |
+          # 1. Install base certificates and keyring first
+          pacman -Sy --noconfirm --noprogressbar archlinux-keyring ca-certificates
+          
+          # 2. Initialize and populate the pacman keyring
+          pacman-key --init
+          pacman-key --populate archlinux
+          
+          # 3. Force database refresh and system upgrade
+          pacman -Syyu --noconfirm --noprogressbar
+          
+          # 4. Install archiso
+          pacman -S --noconfirm --noprogressbar archiso
 
       - name: Build the ISO
         run: mkarchiso -v -w /tmp/work -o /tmp/out .
